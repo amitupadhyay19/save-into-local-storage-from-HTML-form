@@ -32,7 +32,7 @@ function newTweet(e) {
 
     // create an <li> element
     const li = document.createElement('li');
-    li.textContent = tweet;
+    li.textContent = tweet; // tweet = textarea id
 
     // Add the remove button to each tweet
     li.appendChild(removeBtn);
@@ -41,7 +41,7 @@ function newTweet(e) {
     tweetList.appendChild(li);
 
     // add to local storage
-    addTweetLocalStorage(tweet);
+    addTweetLocalStorage(tweet); // getting data from tweet = (textarea)
 
 }
 
@@ -52,14 +52,16 @@ function removeTweet(e) {
     }
 }
 
-// Adds the tweet into the local storage
+// ============ new ============
+
+// Adds the tweets into the local storage
 function addTweetLocalStorage(tweet) {
     let tweets = getTweetsFromStorage();
-    
-    // add the tweet into the array
+
+    // add the tweets into the array
     tweets.push(tweet);
 
-    //convert tweet array into string
+    // convert tweet array into string
     localStorage.setItem('tweets', JSON.stringify(tweets) );
 }
 
@@ -67,10 +69,12 @@ function getTweetsFromStorage() {
     let tweets;
     const tweetsLS = localStorage.getItem('tweets');
     // get the values, if null is returned than we create an empty array
-    if( tweetsLS === null) {
+
+    if(tweetsLS === null) {
         tweets = [];
     } else {
-        tweets = JSON.parse( tweetsLS );
+        tweets = JSON.parse(tweetsLS );
     }
     return tweets;
 }
+
